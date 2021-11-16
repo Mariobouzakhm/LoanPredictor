@@ -1,0 +1,16 @@
+{% extends 'loanpredictor/main_template.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}Approved Loan{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 style="color:green">Loan is likely to be approved! </h3>
+
+                <a href="{% url 'home' %}" class="btn btn-primary"><- Back to Form</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

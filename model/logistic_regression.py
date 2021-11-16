@@ -1,16 +1,15 @@
+from matplotlib import pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
-
 from model.processing import processed_dataset
-from matplotlib import pyplot as plt
 
 import seaborn as sns
 import pickle
 
 
 def logistic_regression(X_train, Y_train):
-    model = LogisticRegression(max_iter=1000)
+    model = LogisticRegression(max_iter=100)
     model.fit(X_train, Y_train)
 
     return model
@@ -50,6 +49,12 @@ def main():
 
     print("Classification Report for Y_Test/Y_Test_Pred")
     print(classification_report(Y_test, Y_test_pred))
+
+    print("Saving Model...")
+    save_model(model, "..\\data\\logistic_regression_model.sav")
+    print("Model Saved.")
+
+    print(model.coef_)
 
     matrix = confusion_matrix(Y_train, Y_pred)
     sns.heatmap(matrix, annot=True)
